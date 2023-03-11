@@ -1,0 +1,32 @@
+h1 {
+    color: white;
+    font-size: 5rem;
+    font-family: "Monaco", monospace;    
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+
+    position: absolute;
+}
+
+h2 {
+    color: gray;
+    font-size: 2rem;
+    font-family: "Monaco", monospace;    
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+    opacity: 0.5;
+
+    position: relative;
+    top: 75px;
+}
+ 
+body {
+    background: rgb(10, 10, 10);
+    display: grid;
+    height: 100vh;
+    margin: 0px;
+    overflow: hidden;
+    place-items: center;  
+}
