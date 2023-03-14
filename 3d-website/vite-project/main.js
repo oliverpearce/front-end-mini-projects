@@ -19,16 +19,16 @@ renderer.render(scene, camera) //draws to screen
 
 // https://threejs.org/docs/index.html#api/en/geometries/TorusGeometry
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-// const material = new THREE.MeshBasicMaterial( {color:0xFF6347, wireframe: true} );
-const material = new THREE.MeshStandardMaterial( {color:0xFF6347} ); //allows light to bounce off of it
+const material = new THREE.MeshBasicMaterial( {color:0xFF6347, wireframe: true} );
+// const material = new THREE.MeshStandardMaterial( {color:0xFF6347} ); //allows light to bounce off of it
 const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff); //akin to a lightbulb
-pointLight.position.set(5, 5, 5);
+pointLight.position.set(0, 0, 0);
 
-const ambientLight = new THREE.AmbientLight(0xffffff); //akin to a floodlight
-scene.add(pointLight, ambientLight);
+// const ambientLight = new THREE.AmbientLight(0xffffff); //akin to a floodlight
+scene.add(pointLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight); //to mark where the pointlight is for debugging
 const gridHelper = new THREE.GridHelper(200, 50); //draws a grid (like a plane())
@@ -37,8 +37,12 @@ scene.add(lightHelper, gridHelper);
 const controls = new OrbitControls(camera, renderer.domElement); //mouse can click and pan around!
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25); //radius of 0.025
-  const material = new THREE.MeshStandardMaterial( {color: 0xffffff} );
+  const rad = THREE.MathUtils.randFloat(0.05, 0.6);
+  const geometry = new THREE.IcosahedronGeometry(rad); //radius of r
+
+  const colors = [0xFFFFFF, 0xF8DE7E, 0xFCF4A3];
+  const material = new THREE.MeshBasicMaterial( {color: colors[Math.floor(Math.random() * colors.length)], wireframe: true} );
+
   const star = new THREE.Mesh(geometry, material);
 
   // use THREE.js randfloatspread to generate random coordnates!
